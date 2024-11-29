@@ -48,23 +48,23 @@ Monitor system health and traffic distribution.
 Reference : https://github.com/technow10/static-web-on-aws.git
 
 # Deployment Scripts:
-# Update all installed packages to their latest versions
+## Update all installed packages to their latest versions
 yum update -y
-# Install Apache HTTP Server
+## Install Apache HTTP Server
 yum install -y httpd
-# Change the current working directory to the Apache web root
+## Change the current working directory to the Apache web root
 cd /var/www/html
-# Install Git
+## Install Git
 yum install git -y
-# Clone the project GitHub repository to the current directory
+## Clone the project GitHub repository to the current directory
 git clone https://github.com/technow10/static-web-on-aws.git
-# Copy all files, including hidden ones, from the cloned repository to the Apache web root
+## Copy all files, including hidden ones, from the cloned repository to the Apache web root
 cp -R static-web-on-aws/. /var/www/html/
-# Remove the cloned repository directory to clean up unnecessary files
+## Remove the cloned repository directory to clean up unnecessary files
 rm -rf static-web-on-aws
-# Enable the Apache HTTP Server to start automatically at system boot
+## Enable the Apache HTTP Server to start automatically at system boot
 systemctl enable httpd 
-# Start the Apache HTTP Server to serve web content
+## Start the Apache HTTP Server to serve web content
 systemctl start httpd
 
 
