@@ -2,7 +2,7 @@
 Host a Static Website on AWS
 
 # Project Overview
-In this project we demonstrates hosting a static website on AWS by deploying it to EC2 instances within a custom Virtual Private Cloud (VPC). Our architecture ensure the application was deployed in scalable, fault tolerance, and secured environment by using services like Application Load Balancer (ALB), Auto Scaling Group (ASG), security groups and more.
+In this project we demonstrates how to host a static website using EC2 instance on AWS within a custom Virtual Private Cloud (VPC). Our architecture ensure the application is deployed in a scalable, fault tolerance, and secured environment by using services like Application Load Balancer (ALB), Auto Scaling Group (ASG), security groups and more.
 
 # Architecture Highlights
 1. Virtual Private Cloud (VPC)
@@ -43,18 +43,30 @@ Set up DNS records to point to the Application Load Balancer.
 Step 5: Monitor and Notify
 Configure SNS for notifications about Auto Scaling Group activities.
 Monitor system health and traffic distribution.
-Key AWS Services Used
-VPC: Network isolation.
-EC2: Compute resources.
-Application Load Balancer: Traffic distribution.
-Auto Scaling Group: Scalability and fault tolerance.
-Route 53: DNS management.
-AWS Certificate Manager: HTTPS for secure communication.
-NAT Gateway: Outbound internet access for private subnets.
-Simple Notification Service (SNS): Alerts for infrastructure activities.
-Benefits of the Solution
-Scalability: Automatically adjusts to traffic demands.
-High Availability: Operates across multiple availability zones.
-Security: Private subnets and SSL-secured communications.
-Cost-Effectiveness: Dynamic scaling minimizes resource wastage.
+
+# Repository Contents
+Reference : https://github.com/technow10/static-web-on-aws.git
+
+# Deployment Scripts:
+# Update all installed packages to their latest versions
+yum update -y
+# Install Apache HTTP Server
+yum install -y httpd
+# Change the current working directory to the Apache web root
+cd /var/www/html
+# Install Git
+yum install git -y
+# Clone the project GitHub repository to the current directory
+git clone https://github.com/technow10/static-web-on-aws.git
+# Copy all files, including hidden ones, from the cloned repository to the Apache web root
+cp -R static-web-on-aws/. /var/www/html/
+# Remove the cloned repository directory to clean up unnecessary files
+rm -rf static-web-on-aws
+# Enable the Apache HTTP Server to start automatically at system boot
+systemctl enable httpd 
+# Start the Apache HTTP Server to serve web content
+systemctl start httpd
+
+
+
 
